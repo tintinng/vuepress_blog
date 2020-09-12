@@ -1,7 +1,7 @@
 module.exports = {
     title: '叮叮叮',
     description: '你好，欢迎来到我的博客',
-    base: '/tintinBlog',
+    base: '/tintinblog',
     head:[
         ['link', {rel: 'icon', href:'/1.jpg' }]
     ],
