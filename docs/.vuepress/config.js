@@ -3,7 +3,7 @@ module.exports = {
     description: '你好，欢迎来到我的博客',
     base: '/tintinblog/',
     head:[
-        ['link', {rel: 'icon', href:'/1.jpg' }]
+        ['link', {rel: 'icon', href:'/logo.png' }]
     ],
     markdown: {
         lineNumbers: true
@@ -24,7 +24,12 @@ module.exports = {
             {text: '外部链接', link: 'https://www.google.com' }
         ],
         sidebar: {
-            "/frontEnd/": [""],
+            "/frontEnd/": [{
+                title: 'vue',
+                children: [
+                    {title: "axios", path: "./vue/axios.md"},
+                ]
+            }],
             "/backEnd/": [{
                 title: 'Java语言',
                 children: [
