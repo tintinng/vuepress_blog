@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>叮叮叮</title>
     <meta name="generator" content="VuePress 1.5.4">
-    <link rel="icon" href="/tintinblog/1.jpg">
+    <link rel="icon" href="/tintinblog/logo.png">
     <meta name="description" content="你好，欢迎来到我的博客">
-    <link rel="preload" href="/tintinblog/assets/css/0.styles.7e49d6d9.css" as="style"><link rel="preload" href="/tintinblog/assets/js/app.1d368b5b.js" as="script"><link rel="preload" href="/tintinblog/assets/js/2.4c29a6c0.js" as="script"><link rel="preload" href="/tintinblog/assets/js/3.933bf2d3.js" as="script"><link rel="prefetch" href="/tintinblog/assets/js/10.27c491a4.js"><link rel="prefetch" href="/tintinblog/assets/js/11.5d7da06c.js"><link rel="prefetch" href="/tintinblog/assets/js/12.12a56901.js"><link rel="prefetch" href="/tintinblog/assets/js/4.d411d693.js"><link rel="prefetch" href="/tintinblog/assets/js/5.19750f16.js"><link rel="prefetch" href="/tintinblog/assets/js/6.6a921418.js"><link rel="prefetch" href="/tintinblog/assets/js/7.3f76a91a.js"><link rel="prefetch" href="/tintinblog/assets/js/8.6bbc2eee.js"><link rel="prefetch" href="/tintinblog/assets/js/9.c65a9e06.js">
+    <link rel="preload" href="/tintinblog/assets/css/0.styles.7e49d6d9.css" as="style"><link rel="preload" href="/tintinblog/assets/js/app.ce821543.js" as="script"><link rel="preload" href="/tintinblog/assets/js/2.4c29a6c0.js" as="script"><link rel="preload" href="/tintinblog/assets/js/3.0b7eff9e.js" as="script"><link rel="prefetch" href="/tintinblog/assets/js/10.f5f3934a.js"><link rel="prefetch" href="/tintinblog/assets/js/11.153e61eb.js"><link rel="prefetch" href="/tintinblog/assets/js/12.67c1b0e1.js"><link rel="prefetch" href="/tintinblog/assets/js/13.afb4f006.js"><link rel="prefetch" href="/tintinblog/assets/js/4.66a02d35.js"><link rel="prefetch" href="/tintinblog/assets/js/5.19750f16.js"><link rel="prefetch" href="/tintinblog/assets/js/6.6a921418.js"><link rel="prefetch" href="/tintinblog/assets/js/7.3f76a91a.js"><link rel="prefetch" href="/tintinblog/assets/js/8.6bbc2eee.js"><link rel="prefetch" href="/tintinblog/assets/js/9.e6387cdd.js">
     <link rel="stylesheet" href="/tintinblog/assets/css/0.styles.7e49d6d9.css">
   </head>
   <body>
@@ -37,6 +37,6 @@
 <img src="/tintinblog/assets/img/all-branches.36c8b98f.png" alt=""> <img src="/tintinblog/assets/img/select-branches-look.af2746bf.png" alt=""></li></ul> <h3 id="各个分支之间有什么关系"><a href="#各个分支之间有什么关系" class="header-anchor">#</a> 各个分支之间有什么关系？</h3> <ul><li>各个分支之间可以共享某些节点（历史状态变更）。<strong>“我们曾经都做过这样的修改”</strong> <img src="/tintinblog/assets/img/node-shared.05b210d6.png" alt=""></li> <li>多个分支可以合并，产生一个新的历史状态变更。例：我正在master分支上，要把fixbug分支上的变更内容合并过来。我（master分支）的历史状态变更向前推进一个，fixbug分支还停留在原来的历史状态变更上。</li></ul> <div class="language-java line-numbers-mode"><pre class="language-java"><code>git merge fixbug
 </code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>可以切换当前的工作分支，即从一个分支可以切换到（checkout）另一个分支。切换到另一个分支上工作。</li></ul> <h3 id="远程分支和本地分支对应"><a href="#远程分支和本地分支对应" class="header-anchor">#</a> 远程分支和本地分支对应</h3> <ul><li>push成功的条件就是远程分支是我本地分支的父亲，意思就是<strong>远程做过的修改（历史状态变更/节点）我本地都做过了，所以我可以push成功，否则远程分支有另外的修改（有分叉）但我本地却没有，因此push会产生冲突</strong>。通过合并（merge）\解决冲突（solve conflict）后再合并（merge）。</li> <li>同理，pull（fetch+merge）成功的条件是本地分支是远程分支的父亲。
 <img src="/tintinblog/assets/img/outline.c822ce07.png" alt=""></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
-    <script src="/tintinblog/assets/js/app.1d368b5b.js" defer></script><script src="/tintinblog/assets/js/2.4c29a6c0.js" defer></script><script src="/tintinblog/assets/js/3.933bf2d3.js" defer></script>
+    <script src="/tintinblog/assets/js/app.ce821543.js" defer></script><script src="/tintinblog/assets/js/2.4c29a6c0.js" defer></script><script src="/tintinblog/assets/js/3.0b7eff9e.js" defer></script>
   </body>
 </html>
