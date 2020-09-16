@@ -26,18 +26,22 @@ module.exports = {
         sidebar: {
             "/frontEnd/": [{
                 title: 'vue',
+                collapsable: false,
                 children: [
-                    {title: "axios", path: "./vue/axios.md"},
+                    {title: "axios入门", path: "./vue/axios_0.md"},
+                    {title: "vuex入门", path: "./vue/vuex_0.md"}
                 ]
             }],
             "/backEnd/": [{
                 title: 'Java语言',
+                collapsable: false,
                 children: [
                     {title: "Java简介", path: "./Java/introduce.md"},
                 ]
             }],
             "/tools/": [{
                 title: 'git',
+                collapsable: false,
                 children: [
                     {title: "git图示理解", path: "Git使用心得.md"},
                 ]
