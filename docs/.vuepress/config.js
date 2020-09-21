@@ -44,6 +44,7 @@ module.exports = {
                 collapsable: false,
                 children: [
                     {title: "git图示理解", path: "Git使用心得.md"},
+                    {title: "Nginx部署", path: "Nginx部署.md"}
                 ]
             }],
             // "/CSbase/CSnetwork": [""],
