@@ -21,13 +21,20 @@ module.exports = {
             //         {text: '数据结构与算法', link:'/CSbase/dataStruAndAlgorith/'}                    
             //     ]
             // },
-            {text: '外部链接', link: 'https://www.google.com' }
+            {text: 'Github', link: 'https://github.com/tintinng' }
         ],
         sidebar: {
             "/frontEnd/": [{
                 title: 'vue',
                 collapsable: false,
                 children: [
+                    {
+                        title: "JavaScript面向对象",
+                        collapsable: false,
+                        children: [
+                            {title: "1-创建对象", path: "./javascript/OOP_1.md"}
+                        ]
+                    },
                     {title: "axios入门", path: "./vue/axios_0.md"},
                     {title: "vuex入门", path: "./vue/vuex_0.md"}
                 ]
