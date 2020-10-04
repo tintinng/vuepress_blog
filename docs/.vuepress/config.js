@@ -24,21 +24,26 @@ module.exports = {
             {text: 'Github', link: 'https://github.com/tintinng' }
         ],
         sidebar: {
-            "/frontEnd/": [{
-                title: 'vue',
-                collapsable: false,
-                children: [
-                    {
-                        title: "JavaScript面向对象",
-                        collapsable: false,
-                        children: [
-                            {title: "1-创建对象", path: "./javascript/OOP_1.md"}
-                        ]
-                    },
-                    {title: "axios入门", path: "./vue/axios_0.md"},
-                    {title: "vuex入门", path: "./vue/vuex_0.md"}
-                ]
-            }],
+            "/frontEnd/": [
+                {
+                    title: "JavaScript",
+                    collapsable: true,
+                    children: [
+                        {
+                            title: "对象与类", 
+                            path: "./javascript/OOP_1.md"
+                        }
+                    ]
+                },
+                {
+                    title: 'vue',
+                    collapsable: true,
+                    children: [
+                        {title: "axios入门", path: "./vue/axios_0.md"},
+                        {title: "vuex入门", path: "./vue/vuex_0.md"}
+                    ]
+                }
+            ],
             "/backEnd/": [{
                 title: 'Java语言',
                 collapsable: false,
