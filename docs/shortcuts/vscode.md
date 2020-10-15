@@ -1,0 +1,1 @@
+![](../statics/key_shortcut/vscodeForWindows.png)

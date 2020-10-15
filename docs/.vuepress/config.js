@@ -1,5 +1,5 @@
 module.exports = {
-    title: '叮叮叮',
+    title: '叮叮叮的博客',
     description: '你好，欢迎来到我的博客',
     base: '/tintinblog/',
     head:[
@@ -14,6 +14,7 @@ module.exports = {
             {text: '前端', link: '/frontEnd/' },
             {text: '后端', link: '/backEnd/' },
             {text: '通用工具', link: '/tools/'},
+            {text: '快捷键', link: '/shortcuts/'},
             // {
             //     text: '计算机基础',
             //     items: [
@@ -30,8 +31,12 @@ module.exports = {
                     collapsable: true,
                     children: [
                         {
+                            title: "数据类型", 
+                            path: "./javascript/数据类型.md"
+                        },
+                        {
                             title: "对象与类", 
-                            path: "./javascript/OOP_1.md"
+                            path: "./javascript/创建对象.md"
                         }
                     ]
                 },
@@ -51,14 +56,26 @@ module.exports = {
                     {title: "Java简介", path: "./Java/introduce.md"},
                 ]
             }],
-            "/tools/": [{
-                title: 'git',
-                collapsable: false,
-                children: [
-                    {title: "git图示理解", path: "Git使用心得.md"},
-                    {title: "Nginx部署", path: "Nginx部署.md"}
-                ]
-            }],
+            "/tools/": [
+                {
+                    title: 'git',
+                    collapsable: false,
+                    children: [
+                        {title: "git图示理解", path: "Git使用心得.md"}
+                    ]
+                },
+                {
+                    title: 'Nginx',
+                    collapsable: false,
+                    children: [
+                        {title: "Nginx部署", path: "Nginx部署.md"}
+                    ]
+                }
+            ],
+            "/shortcuts/": [{
+                title: "VSCode快捷键",
+                path: "vscode.md"
+            }]
             // "/CSbase/CSnetwork": [""],
             // "/CSbase/dataStruAndAlgorith": [""]
         },
