@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /avatar8.jpg
+heroImage: /1.jpg
 features:
 - title: 我是
   details: 练习时长一个月的前端练习生
