@@ -37,6 +37,10 @@ module.exports = {
                         {
                             title: "对象与类", 
                             path: "./javascript/创建对象.md"
+                        },
+                        {
+                            title: "继承", 
+                            path: "./javascript/继承.md"
                         }
                     ]
                 },
