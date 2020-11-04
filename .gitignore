@@ -1,5 +1,5 @@
 node_modules/
-dist/
+# dist/
 
 # Editor directories and files
 .idea

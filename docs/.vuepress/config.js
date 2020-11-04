@@ -12,16 +12,11 @@ module.exports = {
         nav: [
             {text: '首页', link: '/' },
             {text: '前端', link: '/frontEnd/' },
-            {text: '后端', link: '/backEnd/' },
-            {text: '通用工具', link: '/tools/'},
-            {text: '快捷键', link: '/shortcuts/'},
-            // {
-            //     text: '计算机基础',
-            //     items: [
-            //         {text: '计算机网络', link:'/CSbase/CSnetwork/'},
-            //         {text: '数据结构与算法', link:'/CSbase/dataStruAndAlgorith/'}                    
-            //     ]
-            // },
+            {text: '网络', link: '/CSbase/net/' },
+            {text: '浏览器', link:'/CSbase/browser/'},
+            // {text: '后端', link: '/backEnd/' },
+            {text: '其他', link: '/tools/'},
+            // {text: '快捷键', link: '/shortcuts/'},
             {text: 'Github', link: 'https://github.com/tintinng' }
         ],
         sidebar: {
