@@ -2,22 +2,22 @@ module.exports = {
     title: '叮叮叮的博客',
     description: '你好，欢迎来到我的博客',
     base: '/tintinblog/',
-    head:[
-        ['link', {rel: 'icon', href:'/logo.png' }]
+    head: [
+        ['link', { rel: 'icon', href: '/logo.png' }]
     ],
     markdown: {
         lineNumbers: true
     },
     themeConfig: {
         nav: [
-            {text: '首页', link: '/' },
-            {text: '前端', link: '/frontEnd/' },
-            {text: '网络', link: '/CSbase/net/' },
-            {text: '浏览器', link:'/CSbase/browser/'},
+            { text: '首页', link: '/' },
+            { text: '前端', link: '/frontEnd/' },
+            { text: '网络', link: '/CSbase/net/' },
+            { text: '浏览器', link: '/CSbase/browser/' },
             // {text: '后端', link: '/backEnd/' },
-            {text: '其他', link: '/tools/'},
+            { text: '其他', link: '/tools/' },
             // {text: '快捷键', link: '/shortcuts/'},
-            {text: 'Github', link: 'https://github.com/tintinng' }
+            { text: 'Github', link: 'https://github.com/tintinng' }
         ],
         sidebar: {
             "/frontEnd/": [
@@ -26,15 +26,15 @@ module.exports = {
                     collapsable: true,
                     children: [
                         {
-                            title: "数据类型", 
+                            title: "数据类型",
                             path: "./javascript/数据类型.md"
                         },
                         {
-                            title: "对象与类", 
+                            title: "对象与类",
                             path: "./javascript/创建对象.md"
                         },
                         {
-                            title: "继承", 
+                            title: "继承",
                             path: "./javascript/继承.md"
                         }
                     ]
@@ -43,8 +43,8 @@ module.exports = {
                     title: 'vue',
                     collapsable: true,
                     children: [
-                        {title: "axios入门", path: "./vue/axios_0.md"},
-                        {title: "vuex入门", path: "./vue/vuex_0.md"}
+                        { title: "axios入门", path: "./vue/axios_0.md" },
+                        { title: "vuex入门", path: "./vue/vuex_0.md" }
                     ]
                 }
             ],
@@ -52,7 +52,15 @@ module.exports = {
                 title: 'Java语言',
                 collapsable: false,
                 children: [
-                    {title: "Java简介", path: "./Java/introduce.md"},
+                    { title: "Java简介", path: "./Java/introduce.md" },
+                ]
+            }],
+            "/CSbase/": [{
+                title: 'http',
+                collapsable: false,
+                children: [
+                    { title: 'http报文格式', path: "./net/httpFormat.md" },
+                    { title: 'http1和http2', path: "./net/http1&http2.md" }
                 ]
             }],
             "/tools/": [
@@ -60,14 +68,14 @@ module.exports = {
                     title: 'git',
                     collapsable: false,
                     children: [
-                        {title: "git图示理解", path: "Git使用心得.md"}
+                        { title: "git图示理解", path: "Git使用心得.md" }
                     ]
                 },
                 {
                     title: 'Nginx',
                     collapsable: false,
                     children: [
-                        {title: "Nginx部署", path: "Nginx部署.md"}
+                        { title: "Nginx部署", path: "Nginx部署.md" }
                     ]
                 }
             ],
