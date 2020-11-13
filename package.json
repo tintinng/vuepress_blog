@@ -12,6 +12,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@vuepress/plugin-medium-zoom": "^1.7.0"
+    "@vuepress/plugin-back-to-top": "^1.7.1",
+    "@vuepress/plugin-medium-zoom": "^1.7.1"
+  },
+  "dependencies": {
+    "@vuepress/shared-utils": "^1.7.1",
+    "vuepress": "^1.7.1"
   }
 }
