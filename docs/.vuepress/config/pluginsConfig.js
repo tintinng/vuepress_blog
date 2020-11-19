@@ -4,7 +4,8 @@ module.exports = {
         // medium-zoom options here
         // See: https://github.com/francoischalifour/medium-zoom#options
         options: {
-            margin: 16
+            margin: 12,
+            scrollOffset: 100
         }
     },
     '@vuepress/back-to-top': true
