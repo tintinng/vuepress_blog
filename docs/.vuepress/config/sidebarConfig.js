@@ -21,32 +21,43 @@ module.exports = {
                     path: "./javascript/继承.md"
                 }
             ]
+        }
+    ],
+    "/frame/": [
+        {
+            title: 'Vue',
+            collapsable: false,
+            children: [
+                { title: "axios的使用入门", path: "./vue/axios_0.md" },
+                { title: "vuex的使用入门", path: "./vue/vuex_0.md" }
+            ]
         },
         {
-            title: 'vue',
-            collapsable: true,
+            title: 'VueAdmin系列总结',
+            collapsable: false,
             children: [
-                { title: "axios使用体验", path: "./vue/axios_0.md" },
-                { title: "vuex使用体验", path: "./vue/vuex_0.md" }
+                { title: "布局与路由", path: "./vue/vueAdmin1.md" }
             ]
         }
     ],
-    "/backEnd/": [{
-        title: 'Java语言',
-        collapsable: false,
-        children: [
-            { title: "Java简介", path: "./Java/introduce.md" },
-        ]
-    }],
-    "/CSbase/": [{
-        title: 'http',
-        collapsable: false,
-        children: [
-            { title: 'http报文格式', path: "./net/httpFormat.md" },
-            { title: 'http1和http2', path: "./net/http1&http2.md" },
-            { title: 'http和https', path: "./net/http&https.md" }
-        ]
-    }],
+    "/CSbase/": [
+        {
+            title: '浏览器原理',
+            collapsable: false,
+            children: [
+                { title: '从URL到页面展示', path: "./browser/" },
+            ]
+        },
+        {
+            title: 'http',
+            collapsable: false,
+            children: [
+                { title: 'http报文格式', path: "./net/httpFormat.md" },
+                { title: 'http1和http2', path: "./net/http1&http2.md" },
+                { title: 'http和https', path: "./net/http&https.md" }
+            ]
+        }
+    ],
     "/tools/": [
         {
             title: 'git',
