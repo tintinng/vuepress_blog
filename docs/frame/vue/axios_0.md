@@ -2,8 +2,8 @@
 <a name="Kpmcl"></a>
 ### 安装/引用
 
-- 使用npm： ``npm install axios` 
-- 在js文件中引用： ``import axios from 'axios'` 
+- 使用npm： ``npm install axios``
+- 在js文件中引用： ``import axios from 'axios'``
 <a name="brIEN"></a>
 ### axios(config)
 
@@ -50,11 +50,11 @@ axios.all([
 <a name="Sy9rL"></a>
 ### 请求根路径baseURL
 
-- ``axios.defaults.baseURL` 
+- ``axios.defaults.baseURL``
 <a name="SZjdY"></a>
 ### 超时设置timeout
 
-- ``axios.defaults.timeout`
+- ``axios.defaults.timeout``
 <a name="lEwMJ"></a>
 ### 全局配置后
 ```javascript
@@ -121,10 +121,10 @@ instance({
    - 直接返回axios请求（最终方案）
 - 使用回调函数进行后续处理
 ```javascript
-// axios封装在reques.js中
+// axios封装在request.js中
 import axios from 'axios'
 
-export function request(config, suceess, failure) {
+export function request(config, success, failure) {
     // 1、创建axios实例
     const instance = axios.create({
         baseURL: 'http://httpbin.org/',
@@ -135,7 +135,7 @@ export function request(config, suceess, failure) {
     instance(config)
         .then( res => {
             // 回调success
-            suceess(res)
+            success(res)
         })
         .catch( err => {
             // 回调failure
@@ -158,7 +158,7 @@ request({
 
 - 使用Promise包裹
 ```javascript
-// axios封装在reques.js中
+// axios封装在request.js中
 import axios from 'axios'
 
 export function request(config) {
@@ -196,7 +196,7 @@ request({
 
 - **直接返回axios请求**。axios官网介绍了axios依赖原生的ES6 Promise，请求后返回的就是Promise对象，因此可以链式调用。
 ```javascript
-// axios封装在reques.js中
+// axios封装在request.js中
 import axios from 'axios'
 
 export function request(config) {
@@ -249,28 +249,28 @@ export function request(config) {
     })
     
     // 2、axios拦截器
-        // 请求拦截
-        instance.interceptors.request.use(config => {
-            console.log(config)
-            // 1、config中的一些信息要满足服务器的请求要求
-            // 2、每次请求的时候展示logo
-            // 3、某些网络请求必须携带一些特殊的信息（token）
+    // 请求拦截
+    instance.interceptors.request.use(config => {
+        console.log(config)
+        // 1、config中的一些信息要满足服务器的请求要求
+        // 2、每次请求的时候展示logo
+        // 3、某些网络请求必须携带一些特殊的信息（token）
 
-            // 拦截后要继续发送
-            return config
-        }, err => {
-            console.log(err)
-        })
-        // 响应拦截
-        instance.interceptors.response.use(res => {
-            console.log(res)
-            // 一般在响应拦截中取只需要的数据data
+        // 拦截后要继续发送
+        return config
+    }, err => {
+        console.log(err)
+    })
+    // 响应拦截
+    instance.interceptors.response.use(res => {
+        console.log(res)
+        // 一般在响应拦截中取只需要的数据data
 
-            // 拦截后也需要返回数据
-            return res.data
-        }, err => {
-            console.log(err)
-        })
+        // 拦截后也需要返回数据
+        return res.data
+    }, err => {
+        console.log(err)
+    })
     
     // 3、发送网络请求
     return instance(config)

@@ -36,7 +36,9 @@ module.exports = {
             title: 'VueAdmin系列总结',
             collapsable: false,
             children: [
-                { title: "布局与路由", path: "./vue/vueAdmin1.md" }
+                { title: "布局与路由", path: "./vue/vueAdmin1.md" },
+                { title: "路由与权限", path: "./vue/vueAdmin2.md" },
+                { title: "网络请求", path: "./vue/vueAdmin3.md" }
             ]
         }
     ],
