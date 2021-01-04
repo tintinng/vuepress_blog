@@ -9,15 +9,20 @@ module.exports = {
             collapsable: true,
             children: [
                 {
-                    title: "数据类型",
+                    title: "3-数据类型",
                     path: "./javascript/数据类型.md"
                 },
                 {
-                    title: "对象与类",
+                    title: "6-数组操作总结",
+                    path: "./javascript/数组操作总结.md"
+
+                },
+                {
+                    title: "8-对象与类",
                     path: "./javascript/创建对象.md"
                 },
                 {
-                    title: "继承",
+                    title: "8-继承",
                     path: "./javascript/继承.md"
                 }
             ]
