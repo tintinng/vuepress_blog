@@ -18,13 +18,29 @@ module.exports = {
 
                 },
                 {
-                    title: "8-对象与类",
-                    path: "./javascript/创建对象.md"
+                    title: "6-字符串操作总结",
+                    path: "./javascript/字符串操作总结.md"
+                },
+                {
+                    title: "8-对象",
+                    path: "./javascript/对象.md"
+                },
+                {
+                    title: "8-对象操作总结",
+                    path: "./javascript/对象操作总结.md"
                 },
                 {
                     title: "8-继承",
                     path: "./javascript/继承.md"
-                }
+                },
+                {
+                    title: "10-函数",
+                    path: "./javascript/函数.md"
+                },
+                {
+                    title: "11-Promise",
+                    path: "./javascript/Promise.md"
+                },
             ]
         }
     ],
@@ -79,6 +95,15 @@ module.exports = {
             children: [
                 { title: "Nginx部署", path: "Nginx部署.md" }
             ]
+        },
+        {
+            title: '数据结构与算法',
+            collapsable: true,
+            children: [
+                { title: "位运算", path: "位运算.md" },
+                { title: "查找", path: "查找.md" }
+            ]
+
         }
     ],
     "/shortcuts/": [{
