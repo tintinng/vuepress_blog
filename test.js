@@ -1,18 +1,3 @@
-## 类定义
-## 类构造函数
-## 类的实例、原型和类成员
-### 实例
-- 在类的构造函数内部constructor为新创建的实例(this)添加实例属性
-### 原型
-- 在类块中定义的方法为原型方法，在ClassName.prototype(实例的_proto_上)
-- 不能在类块中给原型添加**原始值或对象**作为成员数据
-### 访问器
-- 类也支持获取(get)和设置(set)访问器
-### 类成员
-- 在类块中使用```static```关键字定义静态方法，适合工厂函数
-
-## Test
-```javascript
 class Person {
     constructor(name, age) {
         // 在每个实例上都有
@@ -41,13 +26,10 @@ class Person {
     static staticCreate() {
         return new Person()
     }
-    // 在类外通过Person.staticState访问
-    // 在实例上通过this.constructor.staticState访问
     static staticState = {
         staticProp: '11111'
     }
 }
 
-let p1 = new Person('aa', 11)
-let p2 = new Person('bb', 22)
-```
+let p1 = new Person('aa', 19)
+// console.log(Person.staticState)

@@ -36,11 +36,7 @@ module.exports = {
                 {
                     title: "10-函数",
                     path: "./javascript/函数.md"
-                },
-                {
-                    title: "11-Promise",
-                    path: "./javascript/Promise.md"
-                },
+                }
             ]
         }
     ],
@@ -49,8 +45,8 @@ module.exports = {
             title: 'Vue',
             collapsable: false,
             children: [
-                { title: "axios的使用入门", path: "./vue/axios_0.md" },
-                { title: "vuex的使用入门", path: "./vue/vuex_0.md" }
+                { title: "axios入门", path: "./vue/axios_0.md" },
+                { title: "vuex入门", path: "./vue/vuex_0.md" }
             ]
         },
         {
@@ -58,8 +54,7 @@ module.exports = {
             collapsable: false,
             children: [
                 { title: "布局与路由", path: "./vue/vueAdmin1.md" },
-                { title: "路由与权限", path: "./vue/vueAdmin2.md" },
-                { title: "网络请求", path: "./vue/vueAdmin3.md" }
+                { title: "路由与权限", path: "./vue/vueAdmin2.md" }
             ]
         }
     ],
