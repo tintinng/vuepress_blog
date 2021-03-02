@@ -56,6 +56,14 @@ module.exports = {
                 { title: "布局与路由", path: "./vue/vueAdmin1.md" },
                 { title: "路由与权限", path: "./vue/vueAdmin2.md" }
             ]
+        },
+        {
+            title: 'Carousel组件库总结',
+            collapsable: false,
+            children: [
+                { title: "简易动画库", path: "./carousel/animation.md" },
+                { title: "简易手势库", path: "./carousel/gesture.md" }
+            ]
         }
     ],
     "/CSbase/": [
