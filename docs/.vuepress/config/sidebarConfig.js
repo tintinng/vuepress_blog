@@ -54,7 +54,8 @@ module.exports = {
             collapsable: false,
             children: [
                 { title: "布局与路由", path: "./vue/vueAdmin1.md" },
-                { title: "路由与权限", path: "./vue/vueAdmin2.md" }
+                { title: "路由与权限", path: "./vue/vueAdmin2.md" },
+                { title: "全局状态管理", path: "./vue/vueAdmin4.md" },
             ]
         },
         {

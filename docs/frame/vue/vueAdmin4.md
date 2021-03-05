@@ -1,0 +1,20 @@
+## module
+### app
+#### state
+- siderbar：用于控制菜单栏的展开和收缩
+- device：用于判断当前是PC(desktop)还是移动设备(mobile)
+  - 当检测到在移动端打开状态时添加一个遮罩层mask
+### alarm
+#### state
+- faultDescription
+### permission
+#### state
+- routes：满足权限的路由表
+### user
+#### state
+- role：用户角色
+- avatar：用户头像
+- name：名字
+- telephone：电话
+## getters
+- 使用一个单独文件来统一暴露各个module的计算属性

@@ -1,22 +1,22 @@
-### 使用JS实现CSS动画
-#### CSS动画
+## 使用JS实现CSS动画
+### CSS动画
 - css动画包括两个方面：
   - 使用 ```@keyframe``` 定义动画规则
   - 为元素添加animation属性（duration、timingFunction和delay等多个属性的缩写）
 - 纯css动画无法实现暂停、继续等功能，需要借助JavaScript。
 
 整个动画的过程就是帧切换的过程，浏览器帧刷新率通常为60hz，即大约每16ms会刷新一帧，因此在js动画中，需要每16ms就确定一个帧的状态。有以下三种方案：
-#### setInterval
+### setInterval
 ```javascript
 setInterval(() => {}, 16)
 ```
-#### setTimeout
+### setTimeout
 ```javascript
 let tick = () => {
   setTimeout(tick, 16)
 }
 ```
-#### requestAnimationFrame
+### requestAnimationFrame
 ```javascript
 let tick = () => {
   requestAnimationFrame(tick, 16)
@@ -24,7 +24,7 @@ let tick = () => {
 ```
 - setTimeout和setInterval的任务放到异步队列中，只有当主线程上的任务执行完以后，才会去检查队列的任务。所以有可能主线程存在的任务执行时间过长，导致动画任务的时间不准确。
 - requestAnimationFrame执行和浏览器刷新频率保持一致，不会产生跳帧的现象，保证了动画的流畅度。
-### 封装Animation
+## 封装Animation
 - 首先需要封装一个动画，构造器需要一些必要的参数，其中：
   - object：元素样式
   - timingFunction：横轴是0到1的time，纵轴是0到1的progression。默认给一个Linear
@@ -63,7 +63,7 @@ export class Animation {
     }
 }
 ```
-### 实现时间线TimeLine
+## 实现时间线TimeLine
 - 实现时间线的一些功能：
   - pause\resume：动画的暂停和继续。（Carousel中，手动拖拽轮播图时可以暂停和继续轮播图动画的自动播放）
   - add：添加动画

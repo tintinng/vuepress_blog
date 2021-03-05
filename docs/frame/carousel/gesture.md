@@ -1,3 +1,4 @@
+## 定义手势逻辑和事件
 为了支持轮播图的手动拖拽，同时支持移动场景。因此基于鼠标事件和触摸事件抽象出一套手势逻辑：
 ![](../../statics/vue/../frontEndImgs/carousel/gesture.png)
 - tap：轻点
@@ -11,7 +12,7 @@
   - panend事件：pan后鼠标释放，手指离开屏幕
 - flick：快速拖动（滑动）
   - flick事件：pan结束前0.5s以内的速度 > 1.5px/ms
-### 基于鼠标事件处理拖拽
+## 基于鼠标事件处理拖拽
 - 在鼠标按下时(mousedown)监听mousemove和mouseup事件
 - 在鼠标释放时取消mousemove和mouseup事件
 ```javascript
@@ -31,7 +32,7 @@ element.addEventListener("mousedown", event => {
       document.addEventListener("mouseup", mouseup)
 })
 ```
-### 触摸事件
+## 触摸事件
 - webAPI提供了四个基础的手势事件：
   - touchstart ：当一个或多个触摸点与触控设备表面接触时触发
   - touchmove ：当一个或多个触摸点在触控设备表面移动时触发
@@ -57,7 +58,7 @@ element.addEventListener("touchcancel", event => {
   ......
 })
 ```
-### 监听鼠标事件和触摸事件
+## 监听鼠标事件和触摸事件
 - 基于 start => move => end 和cancel，封装一个可以同时监听鼠标事件和触摸事件Listener
 - 构造函数参数
   - element：监听的元素
@@ -112,7 +113,7 @@ export class Listener {
     }
 }
 ```
-### 识别自定义手势事件
+## 识别自定义手势事件
 - 封装一个Recognizer，**在move => start => end的基础事件中，识别并分发手势事件**
 - 构造函数参数
   - dispatcher：模拟事件并派发 ```Element.dispatchEvent()```
@@ -247,7 +248,7 @@ export class Recognizer {
     }
 }
 ```
-### 封装整个手势库
+## 封装整个手势库
 ```javascript
 export function enableGesture(element) {
     new Listener(element, new Recognizer(new Dispatcher(element)))
