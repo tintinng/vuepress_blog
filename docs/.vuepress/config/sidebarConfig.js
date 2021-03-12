@@ -13,6 +13,10 @@ module.exports = {
                     path: "./javascript/数据类型.md"
                 },
                 {
+                    title: "4-作用域（链）",
+                    path: "./javascript/scope-chain.md"
+                },
+                {
                     title: "6-数组操作总结",
                     path: "./javascript/数组操作总结.md"
 
@@ -59,7 +63,7 @@ module.exports = {
             ]
         },
         {
-            title: 'Carousel组件库总结',
+            title: 'Carousel组件总结',
             collapsable: false,
             children: [
                 { title: "简易动画库", path: "./carousel/animation.md" },
