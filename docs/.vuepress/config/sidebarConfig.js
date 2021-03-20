@@ -76,7 +76,7 @@ module.exports = {
             title: '浏览器原理',
             collapsable: false,
             children: [
-                { title: '从URL到页面展示', path: "./browser/" },
+                { title: '从URL到页面展示', path: "./browser/" }
             ]
         },
         {
