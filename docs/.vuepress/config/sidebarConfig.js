@@ -19,7 +19,6 @@ module.exports = {
                 {
                     title: "6-数组操作总结",
                     path: "./javascript/数组操作总结.md"
-
                 },
                 {
                     title: "6-字符串操作总结",
@@ -46,11 +45,18 @@ module.exports = {
     ],
     "/frame/": [
         {
+            title: '三方工具',
+            collapsable: false,
+            children: [
+                { title: "Axios的一些记录", path: "./vue/axios_0.md" }
+            ]
+        },
+        {
             title: 'Vue',
             collapsable: false,
             children: [
-                { title: "axios入门", path: "./vue/axios_0.md" },
-                { title: "vuex入门", path: "./vue/vuex_0.md" }
+                { title: "Axios的一些记录", path: "./vue/axios_0.md" },
+                { title: "Vuex的一些记录", path: "./vue/vuex_0.md" }
             ]
         },
         {
