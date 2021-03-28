@@ -55,7 +55,6 @@ module.exports = {
             title: 'Vue',
             collapsable: false,
             children: [
-                { title: "Axios的一些记录", path: "./vue/axios_0.md" },
                 { title: "Vuex的一些记录", path: "./vue/vuex_0.md" }
             ]
         },
@@ -63,15 +62,16 @@ module.exports = {
             title: 'VueAdmin系列总结',
             collapsable: false,
             children: [
-                { title: "布局与路由", path: "./vue/vueAdmin1.md" },
-                { title: "路由与权限", path: "./vue/vueAdmin2.md" },
-                { title: "全局状态管理", path: "./vue/vueAdmin4.md" },
+                { title: "布局与侧边栏", path: "./vue/vueAdmin1.md" },
+                { title: "路由与权限", path: "./vue/vueAdmin2.md" }
             ]
         },
         {
             title: 'Carousel组件总结',
             collapsable: false,
             children: [
+                { title: "JSX组件", path: "./carousel/components.md" },
+                { title: "轮播图", path: "./carousel/carousel.md" },
                 { title: "简易动画库", path: "./carousel/animation.md" },
                 { title: "简易手势库", path: "./carousel/gesture.md" }
             ]

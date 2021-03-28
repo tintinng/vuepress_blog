@@ -1,5 +1,3 @@
-## 路由回顾
-在上一篇布局与路由中介绍了整个页面应用的路由出口就是在app-main中，在侧边栏side-bar中使用了嵌套子路由，并通过判断实际路由表```@src\router\index.js```的配置动态生成对应的菜单展示。本篇文章总结一下路由表的配置和基于动态路由权限判断如何实现。
 ## 路由表
 路由配置包括```constantRoutes```和```asyncRoutes```两部分。```constantRoutes```用于配置所有角色都可以访问到的组件页面，```asyncRoutes```用于配置指定角色才能访问到的页面。
 详细业务相关不便展示，这里只贴出用户管理模块的路由配置：
@@ -25,12 +23,13 @@ export const asyncRoutes = [
         meta: { title: '用户列表', roles: ['admin'] }
         }]
     },
-    // 404 页面必须放在最后，如果放在前面会被当前路由优先命中
+    // 如果没有匹配上的路由，则会重定向到 404 页面；
+    // 重定向必须放在最后，如果放在前面会被优先命中
     { path: '*', redirect: '/404', hidden: true }
 ]
 
 const createRouter = () => new Router({
-  scrollBehavior: () => ({ y: 0 }),
+  scrollBehavior: () => ({ y: 0 }), // 切换路由时页面滚动到顶部
   routes: constantRoutes
 })
 
@@ -40,8 +39,10 @@ export default router
 ## 全局导航守卫
 导航守卫用于在组件之间的切换中实现特定功能，例如：权限判断、登陆状态判断等。
 项目配置了一个全局前置路由钩子```@src/permisson.js```,实现用户登录状态的判断和页面权限的判断。
-### 登录状态
-登录状态的判断使用```js-cookie```，在登录的时候会得到服务端返回的权限字段，存储在本地cookie中，并使用全局状态管理保存在```@src/store/modules/user.js```中。如果用户未登录且to页面也不在```白名单```中，则会重定向到登录页面```@src/views/login```
+### 1-判断登录状态
+登录状态的判断使用```js-cookie```第三方库获取cookie。
+- 登录的时候会得到服务端返回的权限字段，存储在本地cookie中。
+  - 如果用户未登录且页面也不在```白名单```中，则会重定向到登录页面```@src/views/login```
 ```javascript
 import { getToken, getUser } from '@/utils/auth' // get token from cookie
 const whiteList = ['/login'] // no redirect whitelist
@@ -61,10 +62,11 @@ router.beforeEach(async(to, from, next) => {
     }
 }
 ```
-### 路由权限
-如果进入到的是登录页面，则直接放行。
-
-如果当前处于登录状态，则判断全局状态管理中是否存在用户角色role，如果存在则说明对应的路由表已经生成好，直接放行。否则是首次登录系统，则要动态生成对应角色权限的路由表：
+### 2-判断用户的权限
+- 如果进入到的是登录页面，则直接放行。
+- 如果当前处于登录状态，则判断用户角色role，
+  - 如果存在role，说明对应的路由表已经生成好，直接放行。
+  - 否则是首次登录系统，则要动态生成对应角色权限的路由表。
 ```javascript
 ......
 if (hasToken) {
@@ -184,4 +186,3 @@ export default {
   actions
 }
 ```
-## 总结
