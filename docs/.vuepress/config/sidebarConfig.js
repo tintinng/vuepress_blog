@@ -71,9 +71,10 @@ module.exports = {
             collapsable: false,
             children: [
                 { title: "JSX组件", path: "./carousel/components.md" },
-                { title: "轮播图", path: "./carousel/carousel.md" },
-                { title: "简易动画库", path: "./carousel/animation.md" },
-                { title: "简易手势库", path: "./carousel/gesture.md" }
+                { title: "轮播图功能", path: "./carousel/carousel.md" },
+                { title: "时间线控制动画", path: "./carousel/animation.md" },
+                { title: "简易手势库", path: "./carousel/gesture.md" },
+                { title: "Carousel组件", path: "./carousel/carousel0.md" },
             ]
         }
     ],

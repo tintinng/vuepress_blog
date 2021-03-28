@@ -1,17 +1,16 @@
 ## 定义手势逻辑和事件
-为了支持轮播图的手动拖拽，同时支持移动场景。因此基于鼠标事件和触摸事件抽象出一套手势逻辑：
 ![](../../statics/vue/../frontEndImgs/carousel/gesture.png)
-- tap：轻点
-  - tap事件：鼠标点击；手指点击
-- press：长按
-  - press事件：鼠标点击超过0.5s；手指点击超过0.5s
-  - pressend事件：鼠标释放后或者手指从触碰离开则产生pressend
-- pan：拖拽（滑动）
-  - panstart事件：鼠标按下移动超过10px；手指滑动超过10px
-  - pan事件：panstart后持续移动（滑动）则会持续触发
-  - panend事件：pan后鼠标释放，手指离开屏幕
-- flick：快速拖动（滑动）
-  - flick事件：pan结束前0.5s以内的速度 > 1.5px/ms
+### tap手势：轻点
+**tap事件**：鼠标点击；手指点击
+### press手势：长按
+- **press事件**：鼠标点击超过0.5s；手指点击超过0.5s
+- **pressend事件**：鼠标释放后或者手指从触碰离开则产生pressend
+### pan手势：拖拽（滑动）
+- **panstart事件**：鼠标按下移动超过10px；手指滑动超过10px
+- **pan事件**：panstart后持续移动（滑动）则会持续触发
+- **panend事件**：pan后鼠标释放，手指离开屏幕
+### flick手势：快速拖动（滑动）
+- **flick事件**：pan结束前0.5s以内的速度 > 1.5px/ms
 ## 基于鼠标事件处理拖拽
 - 在鼠标按下时(mousedown)监听mousemove和mouseup事件
 - 在鼠标释放时取消mousemove和mouseup事件
@@ -58,11 +57,20 @@ element.addEventListener("touchcancel", event => {
   ......
 })
 ```
-## 监听鼠标事件和触摸事件
-- 基于 start => move => end 和cancel，封装一个可以同时监听鼠标事件和触摸事件Listener
-- 构造函数参数
+## 监听手势事件函数
+```javascript
+export function enableGesture(element) {
+    new Listener(element, new Recognizer(new Dispatcher(element)))
+}
+```
+- element：监听的元素
+- Listener：监听器，**监听鼠标事件和触摸事件，识别start、move、end**
+- Recognizer：识别器，**处理start、move、end并派发手势事件**
+- Dispatcher：派发器，**创建事件并派发**
+### Listener
+- 监听器，**监听鼠标事件和触摸事件，识别：start、move和end**
   - element：监听的元素
-  - recogizer：识别手势事件的对象
+  - recogizer：识别器
 ```javascript
 // 监听：鼠标事件和手势事件
 // 识别：start \ move \ end \ cancel
@@ -70,66 +78,41 @@ export class Listener {
     constructor(element, recognizer){
         // 鼠标事件
         element.addEventListener("mousedown", event => {
-            ......
-            recognizer.start()
-            ......
-
+            recognizer.start() // 识别start
             let mousemove = event => {
-                ......
-                recognizer.move()
-                ......
+                recognizer.move() // 识别move
             }
             let mouseup = event => {
-                ......
-                recognizer.end()
-                ......
+                recognizer.end()  // 识别end
             }
         })
         // 触摸事件
         element.addEventListener("touchstart", event => {
-            ......
-            recognizer.start(touch, context)
-            ......
+            recognizer.start(touch, context)   // 识别start
         })
-        
         element.addEventListener("touchmove", event => {
-            ......
-            recognizer.move(touch, context)
-            ......
+            recognizer.move(touch, context) // 识别move
         })
-        
         element.addEventListener("touchend", event => {
-            ......
-            recognizer.end(touch, context)
-            ......
+            recognizer.end(touch, context)  // 识别end
         })
-        
         // touch事件序列可能会被打断，end变成cancel
         element.addEventListener("touchcancel", event => {
-            ......
-            recognizer.cancel(touch, context)
-            ......
+            recognizer.cancel(touch, context)   // 识别cancel
         })
     }
 }
 ```
-## 识别自定义手势事件
-- 封装一个Recognizer，**在move => start => end的基础事件中，识别并分发手势事件**
-- 构造函数参数
-  - dispatcher：模拟事件并派发 ```Element.dispatchEvent()```
+### Recognizer
+- Recognizer：识别器，**处理start、move和end，派发手势事件：tap \ press\pressend \ panstart\pan\panend \ flick**
+  - dispatcher：派发器
 ```javascript
 // 识别并分发：tap \ press\pressend \ panstart\pan\panend \ flick
 export class Recognizer {
     constructor(dispatcher){
         this.dispatcher = dispatcher
     }
-    // let handler;
-    // let startX, startY;
-    // let isPan = false, isTap = true, isPress = false;
-    // 将手势操作和鼠标移动统一抽象
     start (point, context) {
-        // console.log(context)
-        // console.log("start", point.clientX, point.clientY);
         context.startX = point.clientX, context.startY = point.clientY
         // 实现flick手势，在start的时候初始化points数组
         context.points = [{
@@ -137,7 +120,6 @@ export class Recognizer {
             x: point.clientX,
             y: point.clientY
         }]
-    
         context.isTap = true
         context.isPan = false
         context.isPress = false
@@ -148,7 +130,6 @@ export class Recognizer {
             context.isPan = false
             context.isPress = true
             context.handler = null
-            // console.log("press")
             this.dispatcher.dispatch("press", {})
         }, 500);
     }
@@ -188,11 +169,9 @@ export class Recognizer {
             x: point.clientX,
             y: point.clientY
         })
-        // console.log("move", point.clientX, point.clientY);
     }
     end (point, context) {
         if (context.isTap) {
-            // console.log("tap");
             this.dispatcher.dispatch("tap", {})
             // 清除检查[press]的定时器
             clearTimeout(context.handler)
@@ -226,7 +205,6 @@ export class Recognizer {
         } else {
             context.isFlick = false
         }
-
         if (context.isPan) {
             this.dispatcher.dispatch("panend", {
                 startX: context.startX,
@@ -237,20 +215,27 @@ export class Recognizer {
                 isFlick: context.isFlick
             })
         }
-    
-        console.log(v)
-        // console.log("end", point.clientX, point.clientY);
     }
     cancel (point, context) {
-        // console.log("cancel", point.clientX, point.clientY);
         clearTimeout(context.handler)
         this.dispatcher.dispatch("cancel", {})
     }
 }
 ```
-## 封装整个手势库
+### dispatcher
+- 派发器，**创建事件并派发**
 ```javascript
-export function enableGesture(element) {
-    new Listener(element, new Recognizer(new Dispatcher(element)))
+export class Dispatcher {
+    constructor(element) {
+        this.element = element
+    }
+    // 派发事件
+    dispatch(type, properties) {
+        let event = new Event(type)        // 创建事件，传入事件类型
+        for (let name in properties) {
+            event[name] = properties[name]  // 给事件添加属性
+        }
+        this.element.dispatchEvent(event)   // 调用接口派发事件
+    }
 }
 ```

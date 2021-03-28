@@ -53,7 +53,7 @@ var a = createElement("div", {
  "hello world!!"
 )
 ```
-- 因此我们的目标就是通过创建并使用```createElement```来操作dom构造JSX中定义的页面内容
+- 因此我们的目标就是通过定义并使用```createElement```来操作dom构造JSX中定义的页面内容
 ```javascript
 export function createElement(type, attributes, ...children) {
     // 创建元素
