@@ -69,8 +69,6 @@ export function enableGesture(element) {
 - Dispatcher：派发器，**创建事件并派发**
 ### Listener
 - 监听器，**监听鼠标事件和触摸事件，识别：start、move和end**
-  - element：监听的元素
-  - recogizer：识别器
 ```javascript
 // 监听：鼠标事件和手势事件
 // 识别：start \ move \ end \ cancel
@@ -104,8 +102,9 @@ export class Listener {
 }
 ```
 ### Recognizer
-- Recognizer：识别器，**处理start、move和end，派发手势事件：tap \ press\pressend \ panstart\pan\panend \ flick**
-  - dispatcher：派发器
+- Recognizer：**处理start、move和end，派发手势事件**
+- context：手势的事件可能有多个触点，鼠标的事件也存在左中右键的区别。因此对于每一个start\move\end，需要一个对应的context来保存唯一的点（触点、鼠标键）的状态
+  - startX、startY：start对应
 ```javascript
 // 识别并分发：tap \ press\pressend \ panstart\pan\panend \ flick
 export class Recognizer {
@@ -113,107 +112,45 @@ export class Recognizer {
         this.dispatcher = dispatcher
     }
     start (point, context) {
-        context.startX = point.clientX, context.startY = point.clientY
-        // 实现flick手势，在start的时候初始化points数组
-        context.points = [{
-            t: Date.now(),
-            x: point.clientX,
-            y: point.clientY
-        }]
-        context.isTap = true
-        context.isPan = false
-        context.isPress = false
-    
-        // 0.5s如果还未move或者end则产生 [press] 事件
+        // 1、派发start手势事件
+        this.dispatcher.dispatch("start", {})
+        // 2、0.5s如果还未move或者end,则派发press手势事件
         context.handler = setTimeout(() => {
-            context.isTap = false
-            context.isPan = false
-            context.isPress = true
-            context.handler = null
-            this.dispatcher.dispatch("press", {})
+            this.dispatcher.dispatch("press", {}) // 派发press手势事件
         }, 500);
+        // ......
     }
     move (point, context) {
-        // 判断是否移动10px，如果超过10px则产生 [panstart] 事件
-        let dx = point.clientX - context.startX, dy = point.clientY - context.startY
-        // 可能会存在移动超过10px又移回来的情况。因此一旦超过10px就需要设置 isPan为true
+        // 1、如果移动超过10px则派发panstart手势事件
         if (!context.isPan && dx ** 2 + dy ** 2 > 100) {
-            context.isTap = false
-            context.isPan = true
-            context.isPress = false
-            context.isVertical = Math.abs(dx) < Math.abs(dy)
-            this.dispatcher.dispatch("panstart", {
-                startX: context.startX,
-                startY: context.startY,
-                clientX: point.clientX,
-                clientY: point.clientY,
-                isVertical: context.isVertical
-            })
-            // 清除检查[press]的定时器
-            clearTimeout(context.handler)
+            this.dispatcher.dispatch("panstart", {}) // 派发panstart手势事件
+            clearTimeout(context.handler)   // 清除检查press事件的定时器
         }
+        // 2、持续派发pan手势事件
         if (context.isPan) {
-            this.dispatcher.dispatch("pan", {
-                startX: context.startX,
-                startY: context.startY,
-                clientX: point.clientX,
-                clientY: point.clientY,
-                isVertical: context.isVertical
-            })
+            this.dispatcher.dispatch("pan", {}) // 派发pan手势事件
         }
-        // 对瞬时的move过程中的点过滤
-        // 只保留 0.5s 以内的move过的点
-        context.points = context.points.filter(point => Date.now() - point.t < 500)
-        context.points.push({
-            t: Date.now(),
-            x: point.clientX,
-            y: point.clientY
-        })
+        // ......
     }
     end (point, context) {
+        // 1、派发tap手势事件或press手势事件
         if (context.isTap) {
-            this.dispatcher.dispatch("tap", {})
-            // 清除检查[press]的定时器
-            clearTimeout(context.handler)
+            this.dispatcher.dispatch("tap", {}) // 派发tap手势事件
+            clearTimeout(context.handler)   // 清除检查[press]的定时器
         }
         if (context.isPress) {
-            this.dispatcher.dispatch("pressend", {})
+            this.dispatcher.dispatch("pressend", {}) // 派发pressend手势事件
         }
-
-        context.points = context.points.filter(point => Date.now() - point.t < 500)
-        // end的时候计算最近0.5s以内move过的点的速度
-        let d, v
-        if (!context.points.length) {
-            v = 0
-        } else {
-            d = Math.sqrt((point.clientX - context.points[0].x) ** 2 + 
-                (point.clientY - context.points[0].y) ** 2)
-            v = d / (Date.now() - context.points[0].t)
-        }
-        // flick： px/ms
+        // ......
+        // 2、判断是否派发flick手势事件
+        // 2-1、保留最近0.5s以内的move过的点
+        // 2-2、计算最近0.5s以内move过的点的速度v，如果 v > 1.5px/ms 则派发flick手势事件
         if (v > 1.5) {
-            context.isFlick = true
-            this.dispatcher.dispatch("flick", {
-                startX: context.startX,
-                startY: context.startY,
-                clientX: point.clientX,
-                clientY: point.clientY,
-                isVertical: context.isVertical,
-                isFlick: context.isFlick,
-                velocity: v
-            })
-        } else {
-            context.isFlick = false
+            this.dispatcher.dispatch("flick", {})  // 派发flick手势事件
         }
+        // 2、派发panend手势事件
         if (context.isPan) {
-            this.dispatcher.dispatch("panend", {
-                startX: context.startX,
-                startY: context.startY,
-                clientX: point.clientX,
-                clientY: point.clientY,
-                isVertical: context.isVertical,
-                isFlick: context.isFlick
-            })
+            this.dispatcher.dispatch("panend", {})  // 派发panend手势事件
         }
     }
     cancel (point, context) {
@@ -222,8 +159,9 @@ export class Recognizer {
     }
 }
 ```
+- [完整代码](https://github.com/tintinng/Frontend-06-Template/blob/main/Week%2016/JSX/gesture.js)
 ### dispatcher
-- 派发器，**创建事件并派发**
+- 派发器，**创建事件并给元素派发**
 ```javascript
 export class Dispatcher {
     constructor(element) {

@@ -121,6 +121,10 @@ export class Component {
         }
         parent.appendChild(this.root)
     }
+    triggerEvent(type, args) {
+        // 使用浏览器的CustomEvent
+        this[ATTRIBUTE]["on" + type.replace(/^[\s\S]/, s => s.toUpperCase())](new CustomEvent(type, { detail: args }))
+    }
 }
 ```
 - 为了让原生node和组件node接口保持一致，使用wrapper包装原生node
