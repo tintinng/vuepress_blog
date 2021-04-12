@@ -39,6 +39,10 @@ module.exports = {
                 {
                     title: "10-函数",
                     path: "./javascript/函数.md"
+                },
+                {
+                    title: "11-Promise",
+                    path: "./javascript/Promise.md"
                 }
             ]
         }
